@@ -1,7 +1,6 @@
 {
-  "installCommand": "if [ -d flutter ]; then cd flutter && git pull && cd ..; else git clone -b stable --depth 1 https://github.com/flutter/flutter.git; fi",
-  "buildCommand": "./flutter/bin/flutter build web --release",
-  "outputDirectory": "build/web",
+  "outputDirectory": "public",
+  "cleanUrls": true,
   "rewrites": [
     {
       "source": "/(.*)",
