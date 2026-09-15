@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maritime Prep - Company Discovery</title>
+<!-- Tailwind & Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config injected from Style Guidance -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#000613",
+                        "surface-tint": "#476083",
+                        "on-surface": "#1a1c1e",
+                        "tertiary-fixed-dim": "#c3c7cb",
+                        "inverse-surface": "#2f3133",
+                        "on-tertiary-fixed-variant": "#43474b",
+                        "on-tertiary-fixed": "#171c1f",
+                        "secondary": "#005eb2",
+                        "secondary-container": "#4597fe",
+                        "secondary-fixed": "#d5e3ff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#1a1f22",
+                        "primary-fixed-dim": "#afc8f0",
+                        "secondary-fixed-dim": "#a7c8ff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1a1c1e",
+                        "outline-variant": "#c4c6cf",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#6f88ad",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f0f0f3",
+                        "primary-container": "#001f3f",
+                        "surface-container": "#eeeef0",
+                        "inverse-primary": "#afc8f0",
+                        "surface": "#f9f9fc",
+                        "on-primary-fixed": "#001c3a",
+                        "outline": "#74777f",
+                        "surface-bright": "#f9f9fc",
+                        "on-secondary-fixed-variant": "#004788",
+                        "surface-container-high": "#e8e8ea",
+                        "surface-dim": "#dadadc",
+                        "tertiary": "#030608",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#d4e3ff",
+                        "on-secondary-fixed": "#001b3b",
+                        "on-tertiary-container": "#82878a",
+                        "surface-variant": "#e2e2e5",
+                        "on-primary-fixed-variant": "#2f486a",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#002e5d",
+                        "surface-container-low": "#f3f3f6",
+                        "error": "#ba1a1a",
+                        "on-surface-variant": "#43474e",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e2e2e5",
+                        "tertiary-fixed": "#dfe3e7",
+                        "background": "#f9f9fc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "container-max": "1200px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "caption": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        /* Base styles */
+        body {
+            background-color: #f9f9fc; /* Slate Gray surface background */
+            color: #1a1c1e;
+        }
+        
+        /* Typography utilities */
+        .font-headline-md { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 24px; line-height: 32px; }
+        .text-headline-md { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 24px; line-height: 32px; }
+        .font-label-md { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; line-height: 20px; letter-spacing: 0.05em; }
+        .text-label-md { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; line-height: 20px; letter-spacing: 0.05em; }
+        .font-body-md { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; }
+        .text-body-md { font-family: 'Inter', sans-serif; font-weight: 400; font-size: 16px; line-height: 24px; }
+        
+        /* Component specific */
+        .search-input:focus { outline: none; border-color: #0074D9; box-shadow: 0 0 0 1px #0074D9; }
+        
+        .company-card {
+            border: 1px solid #D1D9E0; /* Low-contrast outline */
+            transition: all 0.2s ease;
+        }
+        
+        .company-card:hover {
+            box-shadow: 0px 4px 12px rgba(0, 31, 63, 0.08); /* Active state elevation */
+            border-color: #0074D9;
+        }
+        
+        .badge-blue { background-color: #E0E7ED; color: #0074D9; }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex flex-col min-h-screen">
+<!-- TopAppBar (Web & Mobile) -->
+<header class="flex justify-between items-center px-margin-mobile h-16 w-full z-50 bg-surface dark:bg-primary border-b border-outline-variant dark:border-outline fixed top-0 left-0 right-0">
+<div class="flex items-center gap-4">
+<!-- Navigation Drawer Trigger (Mobile) -->
+<button aria-label="Open Menu" class="md:hidden text-on-surface-variant flex items-center justify-center p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Maritime Prep</h1>
+</div>
+<div class="flex items-center gap-4">
+<!-- Desktop Navigation Links (Hidden on Mobile) -->
+<nav class="hidden md:flex gap-6 items-center font-label-md text-label-md">
+<a class="text-on-surface-variant hover:text-secondary-container transition-colors" href="#">Home</a>
+<!-- Active State -->
+<a class="text-secondary font-bold relative after:content-[''] after:absolute after:bottom-[-20px] after:left-0 after:w-full after:h-1 after:bg-secondary after:rounded-t-full" href="#">Companies</a>
+<a class="text-on-surface-variant hover:text-secondary-container transition-colors" href="#">Practice</a>
+<a class="text-on-surface-variant hover:text-secondary-container transition-colors" href="#">Mocks</a>
+</nav>
+<button aria-label="Settings" class="text-on-surface-variant flex items-center justify-center p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-high border border-outline-variant cursor-pointer">
+<img alt="User Profile Photo" class="w-full h-full object-cover" data-alt="A professional headshot of a confident mariner or cadet in a crisp white maritime uniform against a neutral studio background. Clean, high-key lighting, corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_EjqgCxW4HL_T22uBf3e0ZiVSW8-GvDMLHhb7JbCzouUaIXnvFM8ZAw8XkAo1fYrOsawF8rUEX5xmilwEgtET9n9_zwnR74pJ5LS2FhIfJLdy1BJPeMbptmRSMe-bpUMX7gtwlhdTkGlu9WEti8Ak_gEu1-xIypKCF70N5eSATbZoI-pVOt3ZfDXwrDCJzAPtbyRsc6WxpvuPNYrxQRl70w4BkQKwb6KlSlaEtnN-9sa1XNCECeNOlw"/>
+</div>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow pt-24 pb-24 md:pb-12 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+<!-- Page Header & Search -->
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="font-display-lg text-display-lg md:text-[48px] text-[32px] font-bold text-primary mb-2">Discover Companies</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Browse top maritime organizations, review their interview patterns, and prepare with curated question banks designed for cadet and officer roles.</p>
+</div>
+<div class="relative w-full md:w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="search-input w-full pl-10 pr-4 py-3 bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-body-md text-on-surface placeholder-on-surface-variant/70 transition-all" placeholder="Search shipping companies..." type="text"/>
+</div>
+</div>
+<!-- Filters / Sort (Optional but adds premium feel) -->
+<div class="flex gap-3 mb-8 overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md whitespace-nowrap">All Carriers</button>
+<button class="px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high transition-colors">Container Ships</button>
+<button class="px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high transition-colors">Tankers</button>
+<button class="px-4 py-2 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-full font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high transition-colors">Offshore</button>
+</div>
+<!-- Grid of Professional Cards -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1: MSC -->
+<a class="company-card bg-surface-container-lowest rounded-xl p-6 flex flex-col group cursor-pointer relative overflow-hidden" href="#">
+<div class="flex justify-between items-start mb-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container flex items-center justify-center p-2 border border-outline-variant">
+<img alt="MSC Logo" class="w-full h-full object-contain" data-alt="A high-quality, flat vector logo of MSC (Mediterranean Shipping Company) on a clean white background. Corporate minimalist style, exact colors, professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgr0Z6Fuw7_g72YeChaFQlrdbgKYhn62tQD7tjaQpJBplkFPfhheLntC91-sA4wYLQUSubgWNFZIUly3soJ1yPFzTX40f1uPbSHu07CKyTO7CdYfVRsJ5PLJ5FvZRpI0yfNI1Ny_804Ri71RqBFIXx2wUMknlL1-LKmxxnpJrVWFp9bxSwvEI71OtV1XrEla0Q0hD5eK5QZf2uvpM8sLyuYyfZ8toMwR1EUjGtVCkWEyBNbkYpuSf7KQ"/>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 0;">arrow_outward</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">MSC</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-6 flex-grow">Mediterranean Shipping Company. Global container shipping and logistics giant with rigorous safety standards.</p>
+<div class="mt-auto flex items-center justify-between border-t border-surface-variant pt-4">
+<span class="px-3 py-1 rounded-full badge-blue font-label-md text-[12px] font-semibold">
+                        245 Questions
+                    </span>
+<span class="text-[12px] text-on-surface-variant font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> High Difficulty
+                    </span>
+</div>
+</a>
+<!-- Card 2: Maersk -->
+<a class="company-card bg-surface-container-lowest rounded-xl p-6 flex flex-col group cursor-pointer relative overflow-hidden" href="#">
+<div class="flex justify-between items-start mb-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container flex items-center justify-center p-2 border border-outline-variant">
+<img alt="Maersk Logo" class="w-full h-full object-contain" data-alt="A high-quality, flat vector logo of Maersk (A.P. Møller - Mærsk) featuring the iconic seven-pointed star on a clean white background. Corporate minimalist style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE8zbHi-B3pgtuNSXGkaNMyJSoU7p5zc2_NHShS8zbJ50lS5CqIB7T86uolN-Z_hG7uyg3TB7Wi1w2pjUBF2QVOsoHWj_GA1_IIyuSTAsA0awRJ_6q9AtxHYrdBVLuQHjVyUvedh6LXouW8OD4WyVTKRoNAQWPNGJBgrKQ7Map_gUBSFKuaNhgFp3hwYoScSpKIjmdbaB-ENB0D5OFvU0h66xcl-PHgmHoNdZ8D8ZEXKqfOLbFiUHdiw"/>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 0;">arrow_outward</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Maersk</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-6 flex-grow">Integrated transport and logistics company with multiple brands. Focuses heavily on operational efficiency.</p>
+<div class="mt-auto flex items-center justify-between border-t border-surface-variant pt-4">
+<span class="px-3 py-1 rounded-full badge-blue font-label-md text-[12px] font-semibold">
+                        312 Questions
+                    </span>
+<span class="text-[12px] text-on-surface-variant font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">verified</span> Recommended
+                    </span>
+</div>
+</a>
+<!-- Card 3: Anglo-Eastern -->
+<a class="company-card bg-surface-container-lowest rounded-xl p-6 flex flex-col group cursor-pointer relative overflow-hidden" href="#">
+<div class="flex justify-between items-start mb-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container flex items-center justify-center p-2 border border-outline-variant">
+<img alt="Anglo-Eastern Logo" class="w-full h-full object-contain" data-alt="A professional vector logo of Anglo-Eastern Ship Management on a stark white background. Sharp, clean lines, corporate maritime style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC04LIIT70Yme7xVzGfp2WYjcGDrUsnpHFTtwl0xvX-tbc-O4xDhNyQ-ZmEkwSPd_O1VcppW6L4n986FdQOIPwQ4RagJqKX-aDG5ujeIEl9kFRwRZ17kUoHepYTGgw-eYg-FzvdEq1OXWR_MTkrckZ8ewkSoWhAOOSwxqSgfO0ScAVStRfUbmfbNrGoja79s4vh1zxAveZEel7vYv9TwVSl1OOdcgIFHrCm0Bm7dTVCNvjx1tp_6k5GvA"/>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 0;">arrow_outward</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Anglo-Eastern</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-6 flex-grow">Premier ship management company known for comprehensive training and strict procedural discipline.</p>
+<div class="mt-auto flex items-center justify-between border-t border-surface-variant pt-4">
+<span class="px-3 py-1 rounded-full badge-blue font-label-md text-[12px] font-semibold">
+                        180 Questions
+                    </span>
+</div>
+</a>
+<!-- Card 4: NYK -->
+<a class="company-card bg-surface-container-lowest rounded-xl p-6 flex flex-col group cursor-pointer relative overflow-hidden" href="#">
+<div class="flex justify-between items-start mb-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container flex items-center justify-center p-2 border border-outline-variant">
+<img alt="NYK Logo" class="w-full h-full object-contain" data-alt="A clean vector rendering of the NYK Line (Nippon Yusen Kaisha) corporate logo. Precise geometric shapes, corporate minimalist aesthetic, isolated on white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwFlAsb6a0cyZuLZJ2nsqjSQIOgQ0PtR9BChvpB6WxZnELHSV-1f-n_sqhPBWauuajmOx-CH0GPPDqVB122HquhBtuXa0RJTiCFVjy-puWiLZ7QibSN-muI-iAFirzRIUnaeKGVy4Bx1IOmIkSbkJQYjmaecFliMI9g3sve3SpJcu_lX6iLuQLmBLw6dBdpSayBWz3PJdtxISWY0Ul9kCKzhKrCy5aqV67AaN6BjlX8C_LkqV2g-vZ6g"/>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 0;">arrow_outward</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">NYK Line</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-6 flex-grow">Nippon Yusen Kaisha. A leading global logistics enterprise with a diversified fleet and strong technical focus.</p>
+<div class="mt-auto flex items-center justify-between border-t border-surface-variant pt-4">
+<span class="px-3 py-1 rounded-full badge-blue font-label-md text-[12px] font-semibold">
+                        156 Questions
+                    </span>
+</div>
+</a>
+<!-- Card 5: MOL -->
+<a class="company-card bg-surface-container-lowest rounded-xl p-6 flex flex-col group cursor-pointer relative overflow-hidden" href="#">
+<div class="flex justify-between items-start mb-4">
+<div class="w-14 h-14 rounded-lg bg-surface-container flex items-center justify-center p-2 border border-outline-variant">
+<img alt="MOL Logo" class="w-full h-full object-contain" data-alt="Mitsui O.S.K. Lines (MOL) corporate logo, high contrast, clean vector graphic on a white background. Formal and professional design style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqlk9LIppwweD4H2gQYgazVkCtsopuh4YyH0gKQqXlGD7Um6Gc5s-bu3QHVMYVpdOI9aq-G1oVakt2C0TkL_TeFef2iPgdmZ2ACPUOAdg6fhM4aAuHMTDJ4-o2f0iguZcTKBEMtJnIWQer8oafBWFlqyyPTCv9RlFUE4U5eCePM2hR2fO3Erqa9EjW3a_UdQmF7AvvG56NzaXOBEWDG85Tu31w8nlYbEytTEonpIFPjjRasRqIX9voeA"/>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-secondary transition-colors" style="font-variation-settings: 'FILL' 0;">arrow_outward</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">MOL</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-6 flex-grow">Mitsui O.S.K. Lines. Specialized in bulk carriers and LNG, requiring deep technical knowledge.</p>
+<div class="mt-auto flex items-center justify-between border-t border-surface-variant pt-4">
+<span class="px-3 py-1 rounded-full badge-blue font-label-md text-[12px] font-semibold">
+                        198 Questions
+                    </span>
+</div>
+</a>
+<!-- Empty State / Request Card -->
+<a class="company-card bg-surface-container-low border-dashed border-2 rounded-xl p-6 flex flex-col group cursor-pointer items-center justify-center text-center" href="#">
+<div class="w-14 h-14 rounded-full bg-surface-variant flex items-center justify-center mb-4 group-hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" style="font-variation-settings: 'FILL' 0;">add</span>
+</div>
+<h3 class="font-headline-md text-[18px] text-primary mb-2">Missing a Company?</h3>
+<p class="font-body-md text-[14px] text-on-surface-variant">Request a specific shipping company's interview bank.</p>
+</a>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface dark:bg-primary py-2 px-margin-mobile border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary-container dark:hover:text-secondary-fixed-dim" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">dashboard</span>
+<span class="font-label-md text-label-md text-[10px]">Home</span>
+</a>
+<!-- Active Tab: Companies -->
+<a class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed font-bold scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">business_center</span>
+<span class="font-label-md text-label-md text-[10px]">Companies</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary-container dark:hover:text-secondary-fixed-dim" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">menu_book</span>
+<span class="font-label-md text-label-md text-[10px]">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary-container dark:hover:text-secondary-fixed-dim" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">record_voice_over</span>
+<span class="font-label-md text-label-md text-[10px]">Mocks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-tertiary-container hover:text-secondary-container dark:hover:text-secondary-fixed-dim" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 0;">person</span>
+<span class="font-label-md text-label-md text-[10px]">Profile</span>
+</a>
+</nav>
+</body></html>

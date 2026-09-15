@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maritime Prep - Question Practice</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary": "#000613",
+                      "surface-tint": "#476083",
+                      "on-surface": "#1a1c1e",
+                      "tertiary-fixed-dim": "#c3c7cb",
+                      "inverse-surface": "#2f3133",
+                      "on-tertiary-fixed-variant": "#43474b",
+                      "on-tertiary-fixed": "#171c1f",
+                      "secondary": "#005eb2",
+                      "secondary-container": "#4597fe",
+                      "secondary-fixed": "#d5e3ff",
+                      "on-secondary": "#ffffff",
+                      "tertiary-container": "#1a1f22",
+                      "primary-fixed-dim": "#afc8f0",
+                      "secondary-fixed-dim": "#a7c8ff",
+                      "on-primary": "#ffffff",
+                      "on-background": "#1a1c1e",
+                      "outline-variant": "#c4c6cf",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#6f88ad",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-on-surface": "#f0f0f3",
+                      "primary-container": "#001f3f",
+                      "surface-container": "#eeeef0",
+                      "inverse-primary": "#afc8f0",
+                      "surface": "#f9f9fc",
+                      "on-primary-fixed": "#001c3a",
+                      "outline": "#74777f",
+                      "surface-bright": "#f9f9fc",
+                      "on-secondary-fixed-variant": "#004788",
+                      "surface-container-high": "#e8e8ea",
+                      "surface-dim": "#dadadc",
+                      "tertiary": "#030608",
+                      "error-container": "#ffdad6",
+                      "primary-fixed": "#d4e3ff",
+                      "on-secondary-fixed": "#001b3b",
+                      "on-tertiary-container": "#82878a",
+                      "surface-variant": "#e2e2e5",
+                      "on-primary-fixed-variant": "#2f486a",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#002e5d",
+                      "surface-container-low": "#f3f3f6",
+                      "error": "#ba1a1a",
+                      "on-surface-variant": "#43474e",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-highest": "#e2e2e5",
+                      "tertiary-fixed": "#dfe3e7",
+                      "background": "#f9f9fc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "40px",
+                      "container-max": "1200px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "caption": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #c4c6cf;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center px-margin-mobile h-16 w-full z-50 bg-surface dark:bg-primary border-b border-outline-variant dark:border-outline docked full-width top-0">
+<div class="flex items-center gap-4">
+<button aria-label="Go back" class="p-2 -ml-2 rounded-full hover:bg-surface-container-high transition-colors" onclick="history.back()">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">MSC Practice</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface-variant mr-2">Q 12 / 50</span>
+<button aria-label="Settings" class="p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed">settings</span>
+</button>
+</div>
+</header>
+<!-- Progress Bar -->
+<div class="w-full h-1 bg-surface-container-highest">
+<div class="h-full bg-secondary" style="width: 24%;"></div>
+</div>
+<!-- Main Content Area -->
+<main class="flex-grow flex flex-col md:flex-row max-w-container-max mx-auto w-full p-margin-mobile md:p-margin-desktop gap-gutter pb-32">
+<!-- Practice Canvas (Left/Top) -->
+<div class="flex-grow flex flex-col gap-6 md:w-2/3">
+<!-- Question Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm flex flex-col gap-4 relative">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-secondary tracking-widest uppercase">Navigation Rules</span>
+<button aria-label="Bookmark this question" class="text-on-surface-variant hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">bookmark_border</span>
+</button>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-2">
+                    Describe the lights and shapes required for a vessel constrained by her draft according to COLREGs Rule 28.
+                </h2>
+<div class="flex items-center gap-2 mt-4 text-on-surface-variant opacity-80">
+<span class="material-symbols-outlined text-[18px]">business_center</span>
+<span class="font-caption text-caption">Frequently asked by Mediterranean Shipping Company (MSC)</span>
+</div>
+</div>
+<!-- Answer Section (Hidden by default, shown via JS for demo) -->
+<div class="hidden bg-surface-container-low border border-outline-variant rounded-xl p-6 transition-all duration-300" id="answer-section">
+<h3 class="font-label-md text-label-md text-secondary mb-3">Suggested Answer Structure</h3>
+<div class="prose prose-sm max-w-none text-on-surface font-body-md space-y-3">
+<p>According to Rule 28 of the International Regulations for Preventing Collisions at Sea (COLREGs):</p>
+<ul class="list-disc pl-5 space-y-1">
+<li><strong>Underway (Lights):</strong> In addition to the lights prescribed for a power-driven vessel (masthead lights, sidelights, and sternlight), she may exhibit where they can best be seen three all-round red lights in a vertical line.</li>
+<li><strong>Day shape:</strong> A cylinder where it can best be seen.</li>
+<li><strong>Note:</strong> The term "constrained by her draft" applies only to power-driven vessels. The definition is found in Rule 3(h).</li>
+</ul>
+</div>
+<div class="mt-6 pt-4 border-t border-outline-variant">
+<h4 class="font-label-md text-label-md text-on-surface-variant mb-2">Interviewer's Focus</h4>
+<p class="font-caption text-caption text-on-surface-variant">They are looking for precision. Mentioning that it only applies to power-driven vessels shows a deep understanding of the definitions in Rule 3, not just rote memorization of Rule 28.</p>
+</div>
+</div>
+<!-- Action Area -->
+<div class="flex flex-col gap-4 mt-auto pt-4">
+<button class="w-full py-3 px-6 bg-secondary text-on-secondary font-label-md text-label-md rounded-lg hover:bg-secondary-container transition-colors shadow-sm" id="show-answer-btn">
+                    Show Answer
+                </button>
+<!-- Confidence Status Buttons (Hidden initially) -->
+<div class="hidden grid-cols-3 gap-3" id="confidence-buttons">
+<button class="flex flex-col items-center justify-center py-3 px-2 border border-[#93000a] text-[#93000a] bg-[#ffdad6] rounded-lg hover:bg-[#ffb4ab] transition-colors" onclick="nextQuestion()">
+<span class="material-symbols-outlined mb-1">thumb_down</span>
+<span class="font-caption text-caption">Don't Know</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 px-2 border border-[#8a5100] text-[#8a5100] bg-[#ffdcbc] rounded-lg hover:bg-[#ffb870] transition-colors" onclick="nextQuestion()">
+<span class="material-symbols-outlined mb-1">remove</span>
+<span class="font-caption text-caption">Need Practice</span>
+</button>
+<button class="flex flex-col items-center justify-center py-3 px-2 border border-[#00531a] text-[#00531a] bg-[#b9f3c5] rounded-lg hover:bg-[#9de4ab] transition-colors" onclick="nextQuestion()">
+<span class="material-symbols-outlined mb-1">thumb_up</span>
+<span class="font-caption text-caption">Know</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Sidebar / Details (Desktop) -->
+<aside class="hidden md:flex md:w-1/3 flex-col gap-6">
+<!-- Session Stats -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5">
+<h3 class="font-label-md text-label-md text-on-surface mb-4 border-b border-outline-variant pb-2">Session Progress</h3>
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Mastered</span>
+<span class="font-label-md text-label-md text-[#00531a]">4</span>
+</div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Review Needed</span>
+<span class="font-label-md text-label-md text-[#8a5100]">6</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Unseen</span>
+<span class="font-label-md text-label-md text-on-surface">38</span>
+</div>
+</div>
+<!-- Notes Section -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex-grow">
+<h3 class="font-label-md text-label-md text-on-surface mb-4 border-b border-outline-variant pb-2 flex justify-between">
+                    Personal Notes
+                    <span class="material-symbols-outlined text-[18px] text-on-surface-variant cursor-pointer">edit</span>
+</h3>
+<textarea class="w-full h-full min-h-[150px] bg-transparent border-none resize-none focus:ring-0 font-body-md text-body-md text-on-surface-variant p-0" placeholder="Jot down quick thoughts or mnemonics here..."></textarea>
+</div>
+</aside>
+</main>
+<script>
+        document.getElementById('show-answer-btn').addEventListener('click', function() {
+            this.classList.add('hidden');
+            document.getElementById('answer-section').classList.remove('hidden');
+            document.getElementById('confidence-buttons').classList.remove('hidden');
+            document.getElementById('confidence-buttons').classList.add('grid');
+        });
+
+        function nextQuestion() {
+            // Visual feedback loop for demo purposes
+            document.getElementById('answer-section').classList.add('hidden');
+            document.getElementById('confidence-buttons').classList.add('hidden');
+            document.getElementById('confidence-buttons').classList.remove('grid');
+            
+            const btn = document.getElementById('show-answer-btn');
+            btn.classList.remove('hidden');
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin inline-block mr-2 text-[18px]">sync</span> Loading next...';
+            btn.classList.add('opacity-70');
+            
+            setTimeout(() => {
+                btn.innerHTML = 'Show Answer';
+                btn.classList.remove('opacity-70');
+            }, 600);
+        }
+    </script>
+</body></html>

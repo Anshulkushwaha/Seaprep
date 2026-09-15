@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maritime Prep - Student Dashboard</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#000613",
+                    "surface-tint": "#476083",
+                    "on-surface": "#1a1c1e",
+                    "tertiary-fixed-dim": "#c3c7cb",
+                    "inverse-surface": "#2f3133",
+                    "on-tertiary-fixed-variant": "#43474b",
+                    "on-tertiary-fixed": "#171c1f",
+                    "secondary": "#005eb2",
+                    "secondary-container": "#4597fe",
+                    "secondary-fixed": "#d5e3ff",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#1a1f22",
+                    "primary-fixed-dim": "#afc8f0",
+                    "secondary-fixed-dim": "#a7c8ff",
+                    "on-primary": "#ffffff",
+                    "on-background": "#1a1c1e",
+                    "outline-variant": "#c4c6cf",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#6f88ad",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-on-surface": "#f0f0f3",
+                    "primary-container": "#001f3f",
+                    "surface-container": "#eeeef0",
+                    "inverse-primary": "#afc8f0",
+                    "surface": "#f9f9fc",
+                    "on-primary-fixed": "#001c3a",
+                    "outline": "#74777f",
+                    "surface-bright": "#f9f9fc",
+                    "on-secondary-fixed-variant": "#004788",
+                    "surface-container-high": "#e8e8ea",
+                    "surface-dim": "#dadadc",
+                    "tertiary": "#030608",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#d4e3ff",
+                    "on-secondary-fixed": "#001b3b",
+                    "on-tertiary-container": "#82878a",
+                    "surface-variant": "#e2e2e5",
+                    "on-primary-fixed-variant": "#2f486a",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#002e5d",
+                    "surface-container-low": "#f3f3f6",
+                    "error": "#ba1a1a",
+                    "on-surface-variant": "#43474e",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#e2e2e5",
+                    "tertiary-fixed": "#dfe3e7",
+                    "background": "#f9f9fc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "container-max": "1200px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "caption": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .circular-progress {
+            transform: rotate(-90deg);
+        }
+        .circular-progress circle {
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 1s ease-out;
+            stroke: #0074D9; /* Action Blue mapping */
+        }
+        .circular-progress .bg-circle {
+            stroke: #E0E7ED; /* Mapped from design spec */
+        }
+        
+        /* Typography overrides to ensure specific font styling if Tailwind classes miss */
+        .text-action-blue { color: #0074D9; }
+        .bg-action-blue { background-color: #0074D9; }
+        .border-action-blue { border-color: #0074D9; }
+        
+        .text-deep-navy { color: #001f3f; } /* primary-container */
+        .border-deep-navy { border-color: #001f3f; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:flex-row pb-20 md:pb-0">
+<!-- Mobile Navigation Drawer (Hidden on md, implemented as a side drawer for demo purposes, usually hidden until toggled on mobile) -->
+<!-- Not rendering full drawer to save complexity, relying on Top/Bottom navs -->
+<!-- Sidebar for Desktop -->
+<aside class="hidden md:flex flex-col h-screen w-64 bg-surface py-margin-mobile border-r border-outline-variant flex-shrink-0 sticky top-0 z-40">
+<div class="px-gutter mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Maritime Prep</h1>
+</div>
+<div class="px-gutter mb-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-variant flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young merchant navy cadet officer in uniform, standing on a bright, modern bridge with clean white surfaces. The lighting is crisp and natural, highlighting the disciplined, focused demeanor. A subtle deep navy and slate gray color palette pervades the background, maintaining a corporate minimalist maritime aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcggfyP6J442cFfK4OZE2pjyT56qBgIj3V4o3t7iAL_T-fjy9LC3mv98gjsCd_M50JRsfW4NX1j8cdOB5_F4CKoJkogw-phU41y2pNJWGjzZbzLzIzASwqgx1Px0XDsVh6nQCrWkWKUzal-IvYTItK_uW6OTU_eayKPR576XPDSZSEA17u_cRgmlkyPbTW5Aw90YOyEkc9reENjc1nUKx2ZMX9GYckG2GhX_4ipUcbAzfVo_ZdBGh-EQ"/>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary font-bold">Cadet Officer</p>
+<p class="font-caption text-caption text-on-surface-variant">Marine Engineering</p>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<!-- Active Home Tab -->
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-full mx-2 font-label-md text-label-md transition-colors" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Home
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant mx-2 font-label-md text-label-md hover:bg-surface-container-highest rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">business_center</span>
+                Companies
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant mx-2 font-label-md text-label-md hover:bg-surface-container-highest rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+                Practice
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant mx-2 font-label-md text-label-md hover:bg-surface-container-highest rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">record_voice_over</span>
+                Mocks
+            </a>
+</nav>
+<div class="px-4 mt-auto">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant mx-2 font-label-md text-label-md hover:bg-surface-container-highest rounded-full transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-h-screen">
+<!-- TopAppBar (Mobile & Desktop) -->
+<header class="flex justify-between items-center px-margin-mobile md:px-gutter h-16 w-full z-50 bg-surface md:bg-background border-b border-outline-variant md:border-none sticky top-0 md:relative">
+<div class="flex items-center gap-3 md:hidden">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A small circular avatar showing a professional young merchant navy cadet in uniform, well lit against a bright, modern white background, embodying discipline and readiness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD42ZlBqdrmRc-ooMHoEddUv2n-4FIO9twAh0_7sg7zhxDvjoR2Pu3_klfvPS1PThs7nZA_3P_qj6iLBqbnGL878XXAy1edRzsc2wEisSNMESytGVd4Kek80RfZex05rQ-1sdsyoOlbqSqgeUxzpO16-f6_VQMH-Qdnw77Kqs-nuHcSNyWT3thwBt4Orqo8keKz125qpd4lxU3jupxGrqTzsau9PFzY3oegnMPVFS8x4sFcpgXoaqifbw"/>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary md:hidden">Maritime Prep</h1>
+</div>
+<!-- Desktop Header Title -->
+<div class="hidden md:block">
+<h2 class="font-headline-lg text-headline-lg text-primary">Dashboard</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Welcome back, Officer. Your readiness is tracking well.</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors md:hidden">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="hidden md:flex items-center gap-4">
+<div class="font-label-md text-label-md px-4 py-2 bg-surface-container rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">calendar_today</span>
+                        Exam in 45 Days
+                    </div>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="flex-1 p-margin-mobile md:p-gutter max-w-container-max w-full mx-auto space-y-gutter">
+<!-- Top Bento Grid Area -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Main Readiness Card (Large Circular Progress) -->
+<div class="col-span-1 md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col md:flex-row items-center gap-8 relative overflow-hidden">
+<!-- Subtle background decoration -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-container opacity-5 rounded-full -translate-y-1/2 translate-x-1/4 blur-2xl"></div>
+<div class="relative w-48 h-48 flex-shrink-0 flex items-center justify-center">
+<svg class="w-full h-full circular-progress" viewbox="0 0 100 100">
+<!-- Background circle -->
+<circle class="bg-circle" cx="50" cy="50" fill="none" r="45" stroke-width="8"></circle>
+<!-- Progress circle (72%) -->
+<circle cx="50" cy="50" fill="none" r="45" stroke-dasharray="282.7" stroke-dashoffset="79.15" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-display-lg text-display-lg text-primary">72<span class="text-headline-md">%</span></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Ready</span>
+</div>
+</div>
+<div class="flex-1 text-center md:text-left z-10">
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Overall Readiness</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">You are on track to meet the benchmark for the upcoming Orals. Focus on weak areas to improve your standing.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+<button class="bg-action-blue text-on-primary font-label-md text-label-md px-6 py-3 rounded-lg shadow-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                                Resume Practice
+                            </button>
+<button class="border border-deep-navy text-deep-navy font-label-md text-label-md px-6 py-3 rounded-lg hover:bg-surface-container-low transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">record_voice_over</span>
+                                Start Mock
+                            </button>
+</div>
+</div>
+</div>
+<!-- Stats Stack -->
+<div class="col-span-1 md:col-span-4 flex flex-col gap-gutter">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Questions Practiced</p>
+<p class="font-headline-lg text-headline-lg text-primary">1,248</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">library_books</span>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Mocks Completed</p>
+<p class="font-headline-lg text-headline-lg text-primary">14</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed-variant">
+<span class="material-symbols-outlined">headset_mic</span>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Avg Mock Score</p>
+<p class="font-headline-lg text-headline-lg text-primary">84%</p>
+</div>
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Focus Areas -->
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Targeted Focus Areas</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Weak Areas Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-error">warning</span>
+<h4 class="font-label-md text-label-md text-primary uppercase">Attention Required</h4>
+</div>
+<div class="space-y-5">
+<!-- Progress Item 1 -->
+<div>
+<div class="flex justify-between font-body-md text-body-md mb-2">
+<span class="text-on-surface">Ship Stability &amp; Trim</span>
+<span class="font-bold text-error">45%</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 45%"></div>
+</div>
+</div>
+<!-- Progress Item 2 -->
+<div>
+<div class="flex justify-between font-body-md text-body-md mb-2">
+<span class="text-on-surface">MARPOL Regulations</span>
+<span class="font-bold text-error">52%</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-error" style="width: 52%"></div>
+</div>
+</div>
+<!-- Progress Item 3 -->
+<div>
+<div class="flex justify-between font-body-md text-body-md mb-2">
+<span class="text-on-surface">COLREGs Scenarios</span>
+<span class="font-bold text-[#b55e10]">68%</span> <!-- Warning color approach -->
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-[#b55e10]" style="width: 68%"></div>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-2 border border-outline-variant rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-low transition-colors text-center">
+                            Review Weak Topics
+                        </button>
+</div>
+<!-- Recent Activity / Strong Areas -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<h4 class="font-label-md text-label-md text-primary uppercase">Mastered Subjects</h4>
+</div>
+<div class="space-y-5 flex-1">
+<!-- Progress Item 1 -->
+<div>
+<div class="flex justify-between font-body-md text-body-md mb-2">
+<span class="text-on-surface">Navigation Aids (ECDIS)</span>
+<span class="font-bold text-[#147347]">92%</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-[#147347]" style="width: 92%"></div>
+</div>
+</div>
+<!-- Progress Item 2 -->
+<div>
+<div class="flex justify-between font-body-md text-body-md mb-2">
+<span class="text-on-surface">Meteorology</span>
+<span class="font-bold text-[#147347]">88%</span>
+</div>
+<div class="w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-[#147347]" style="width: 88%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface py-2 px-margin-mobile border-t border-outline-variant z-50">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center text-secondary font-bold hover:text-secondary-container transition-colors transform scale-90 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-md text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary-container transition-colors" href="#">
+<span class="material-symbols-outlined">business_center</span>
+<span class="font-label-md text-[10px]">Companies</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary-container transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-label-md text-[10px]">Practice</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary-container transition-colors" href="#">
+<span class="material-symbols-outlined">record_voice_over</span>
+<span class="font-label-md text-[10px]">Mocks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-secondary-container transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-[10px]">Profile</span>
+</a>
+</nav>
+<!-- Animation script for progress bar (simple on load) -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const circle = document.querySelector('.circular-progress circle:nth-child(2)');
+            if(circle) {
+                // Trigger reflow to ensure animation runs
+                void circle.offsetWidth;
+                // Target dashoffset calculated in inline styles, just ensuring it animates
+                circle.style.strokeDashoffset = '79.15';
+            }
+        });
+    </script>
+</body></html>
