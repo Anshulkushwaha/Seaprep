@@ -1,4 +1,4 @@
-# maritime_prep_app
+# seaprep
 
 A new Flutter project.
 
